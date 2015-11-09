@@ -47,6 +47,8 @@ class EventController
     public function saveEvent($id, Request $request)
     {
         $event = $request->getContent();
+        echo $event;
+        die();
         $file = __DIR__.'/../data/event/'.$id.'.json';
         $fh = fopen($file, 'w+');
         fwrite($fh, $event);
