@@ -12,10 +12,10 @@ $app->register(new Silex\Provider\HttpFragmentServiceProvider());
 $app->register(new Silex\Provider\DoctrineServiceProvider(), [
     'db.options' => [
         'driver'    => 'pdo_mysql',
-        'host'      => 'localhost',
+        'host'      => '127.0.0.1',
         'dbname'    => 'events',
         'user'      => 'root',
-        'password'  => 'NcbpT35t3d',
+        'password'  => '',
         'charset'   => 'utf8'
     ]
 ]);

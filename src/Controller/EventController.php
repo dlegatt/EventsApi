@@ -9,8 +9,10 @@ use Symfony\Component\HttpFoundation\Request;
 
 class EventController
 {
-    public function allEvents()
+    public function allEvents(Application $app)
     {
+        $model = new EventModel($app);
+        return new JsonResponse($model->findAllEvents());
         $eventDir = __DIR__.'/../data/event/';
         $dir = opendir($eventDir);
         $files = [];
@@ -28,7 +30,7 @@ class EventController
     public function eventDetails($id, Application $app)
     {
         $model = new EventModel($app);
-        return new JsonResponse($model->findAllEvents());
+        return new JsonResponse($model->findEvent($id));
         die();
         $file = __DIR__.'/../data/event/'.$id.'.json';
         if (file_exists($file)) {

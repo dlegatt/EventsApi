@@ -6,7 +6,7 @@ class EventModel extends BaseModel
 {
     public function findEvent($id)
     {
-        $sql = 'SELECT * FROM event WHERE id = ?';
+        $sql = 'SELECT id, name, date, time,location_id, image_url as imageUrl FROM event WHERE id = ?';
         $event = $this->db->fetchAssoc($sql, [$id]);
         $event['sessions'] = $this->findSessions($event['id']);
         $event['location'] = $this->findLocation($event['location_id']);
