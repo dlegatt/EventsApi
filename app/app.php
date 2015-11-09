@@ -9,5 +9,15 @@ $app->register(new Silex\Provider\UrlGeneratorServiceProvider());
 $app->register(new Silex\Provider\ServiceControllerServiceProvider());
 $app->register(new Silex\Provider\TwigServiceProvider());
 $app->register(new Silex\Provider\HttpFragmentServiceProvider());
+$app->register(new Silex\Provider\DoctrineServiceProvider(), [
+    'db.options' => [
+        'driver'    => 'pdo_mysql',
+        'host'      => 'localhost',
+        'dbname'    => 'events',
+        'user'      => 'root',
+        'password'  => 'NcbpT35t3d',
+        'charset'   => 'utf8'
+    ]
+]);
 
 return $app;

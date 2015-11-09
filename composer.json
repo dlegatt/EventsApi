@@ -4,7 +4,8 @@
     "silex/web-profiler": "^1.0",
     "monolog/monolog": "^1.16",
     "symfony/debug": "^2.7",
-    "symfony/twig-bridge": "^2.7"
+    "symfony/twig-bridge": "^2.7",
+    "doctrine/dbal": "~2.2"
   },
   "autoload": {
     "psr-4": {
