@@ -3,6 +3,9 @@
 namespace App\Controller;
 
 use App\Model\EventModel;
+use App\ORM\Factory\LocationFactory;
+use App\ORM\Entity\Location;
+use App\ORM\Repository\EventRepository;
 use Silex\Application;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
@@ -13,24 +16,16 @@ class EventController
     {
         $model = new EventModel($app);
         return new JsonResponse($model->findAllEvents());
-        $eventDir = __DIR__.'/../data/event/';
-        $dir = opendir($eventDir);
-        $files = [];
-
-        while (false !== ($entry = readdir($dir))) {
-            if ($entry !== '.' && $entry !== '..') {
-                $event = file_get_contents($eventDir.$entry);
-                $event = str_replace(["\r", "\n", "\t"], '', $event);
-                $files[] = json_decode($event);
-            }
-        }
-        return new JsonResponse($files);
     }
 
     public function eventDetails($id, Application $app)
     {
         $model = new EventModel($app);
-        return new JsonResponse($model->findEvent($id));
+        $event = $model->findEvent($id);
+        if(! $event === false) {
+            return new JsonResponse($model->findEvent($id));
+        }
+        return new JsonResponse(['errors' => [['message' => 'Entity with ID '.$id.' not found']]], 404);
         die();
         $file = __DIR__.'/../data/event/'.$id.'.json';
         if (file_exists($file)) {

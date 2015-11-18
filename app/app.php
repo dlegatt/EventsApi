@@ -15,7 +15,7 @@ $app->register(new Silex\Provider\DoctrineServiceProvider(), [
         'host'      => '127.0.0.1',
         'dbname'    => 'events',
         'user'      => 'root',
-        'password'  => '',
+        'password'  => 'NcbpT35t3d',
         'charset'   => 'utf8'
     ]
 ]);
